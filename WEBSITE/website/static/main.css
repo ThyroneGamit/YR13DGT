@@ -1,3 +1,104 @@
 nav{
     background-color: #81a7d8;
 }
+
+/* Style for login page container */
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Login heading */
+.login-container h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Form inputs */
+.login-container .form-control {
+    width: 100%;
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* Form labels */
+.login-container label {
+    font-weight: 500;
+    color: #555;
+}
+
+/* Submit button */
+.login-container .btn-primary {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #004aad;
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for button */
+.login-container .btn-primary:hover {
+    background-color: #00327a;
+}
+
+
+
+/* for forgot password section */
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #004aad;
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #00327a;
+}
+
+.text-muted {
+    color: #666;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}

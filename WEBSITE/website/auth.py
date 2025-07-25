@@ -51,6 +51,30 @@ def sign_up():
    
     return render_template("sign_up.html", user=current_user)
 
+#register now route
+@auth.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            flash('Email already registered. Please log in.', category='error')
+            return redirect(url_for('auth.login'))
+
+        new_user = User(
+            email=email,
+            password=generate_password_hash(password, method='pbkdf2:sha256')
+        )
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash('Account created successfully! You can now log in.', category='success')
+        return redirect(url_for('auth.login'))
+
+    return render_template('sign_up.html', user=current_user)
+
 # login route
 @auth.route("/login", methods=['GET', 'POST'])
 # login function

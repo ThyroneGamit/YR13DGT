@@ -66,3 +66,14 @@ def delete_post(id):
         db.session.commit()
         flash('Post deleted!' , category= 'success')
     return redirect(url_for('views.blog'))
+
+
+@views.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        # You can check if the email exists in your DB here.
+        flash('If this email exists in our system, a password reset link has been sent.', category='info')
+        return redirect(url_for('views.login')) 
+
+    return render_template('forgot_password.html', user=current_user)
