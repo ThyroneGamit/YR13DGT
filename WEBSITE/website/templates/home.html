@@ -1,39 +1,56 @@
-{% extends "template.html" %} {% block title %}Home{% endblock %} {% block content
-    %}
-    <div id="Sancta Maria College Basketball" class="tabcontent"></div>
-    <h1 class="pageHeading">Basketball</h1>
-    <h3 class="subheading">Hard work beats talent when talent fails to work hard</h3>
+{% extends "template.html" %}
+{% block title %}Home{% endblock %}
 
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
-        <body>
-          <!--image header-->
-            <h1>
-                <img src="static/assets/img/background.jpeg" alt="Header Photo" style="width:100%; height:auto;">
-            </h1>
-            <!--paragraphs-->
-        </body>
-          <h2 class="subheading">What is this website about</h2>
-          <p>ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-            ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-            ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-          </p>
-      
-        <h2 class="subheading">how to check your videos</h2>
-          <p>ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-            ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-            ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-          </p>
-        <h2 class="subheading">How it Works</h2>
-          <p>ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-            ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-            ExampleParagraphExampleParagraphExampleParagraphExampleParagraph
-          </p>
-              
-        
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
+<!-- Hero Section (No Background) -->
+<div class="text-center text-white bg-dark py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Sancta Maria College Basketball</h1>
+        <p class="lead fst-italic">"Hard work beats talent when talent fails to work hard"</p>
+    </div>
+</div>
 
-    {% endblock %}
+<!-- Main Content -->
+<div class="container my-5">
+
+    <h2 class="subheading mb-3">🏀 About This Website</h2>
+    <p>
+        Welcome to the official Sancta Maria College Basketball hub — your go-to destination for all things basketball
+        at SMC.
+        Whether you're a player, coach, parent, or fan, this site provides up-to-date information on team activities,
+        game results,
+        player development, and more.
+    </p>
+
+    <h2 class="subheading mt-5 mb-3">🎥 Accessing Game Footage</h2>
+    <p>
+        Players can log in with their credentials to access personalized video footage from games and training sessions.
+        Simply head to the <strong>"Videos"</strong> section, where content is organized by team, date, and opponent.
+        This feature helps athletes reflect on past performances and continuously improve.
+    </p>
+
+    <h2 class="subheading mt-5 mb-3">📋 Player Development Tools</h2>
+    <p>
+        Our platform includes tools for performance review, including coach feedback and highlight tagging.
+        Coaches can leave notes on key moments in each video, allowing players to focus on specific improvements and
+        track their progress throughout the season.
+    </p>
+
+    <h2 class="subheading mt-5 mb-3">🗓️ News & Events</h2>
+    <p>
+        Stay informed with updates on upcoming matches, tournaments, and team meetings. The news section is updated
+        regularly
+        to ensure all team members and supporters are on the same page.
+    </p>
+
+    <h2 class="subheading mt-5 mb-3">📞 Contact the Coaching Staff</h2>
+    <p>
+        If you have any questions regarding training schedules, team selections, or media access, head over to the
+        <a href="{{ url_for('views.contact') }}">Contact Us</a> page where you’ll find direct email and phone contacts
+        for coaching staff.
+    </p>
+
+</div>
+{% endblock %}

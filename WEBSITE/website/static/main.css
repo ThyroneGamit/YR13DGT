@@ -1,10 +1,79 @@
-nav{
-    background-color: #81a7d8;
+/* Navigation bar styling */
+nav {
+    background-color: #81a7d8; /* Soft blue background for nav */
 }
 
-/* Style for login page container */
+/* === Login and Forgot Password Container === */
 .login-container {
-    max-width: 400px;
+    max-width: 400px;           /* Set max width */
+    margin: 60px auto;          /* Center the container */
+    padding: 30px;              /* Inner spacing */
+    background: #ffffff;        /* White background */
+    border-radius: 15px;        /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* === Headings === */
+.login-container h3 {
+    text-align: center;         /* Center the heading */
+    margin-bottom: 25px;        /* Space below heading */
+    color: #333;                /* Dark text */
+}
+
+/* === Form Inputs === */
+.login-container .form-control,
+.form-control {
+    width: 100%;                /* Full width input */
+    border-radius: 10px;        /* Rounded corners */
+    padding: 12px;              /* Inner spacing */
+    border: 1px solid #ccc;     /* Light border */
+    margin-top: 5px;            /* Small space above */
+    margin-bottom: 15px;        /* Space below each input */
+    box-sizing: border-box;     /* Includes padding in width */
+}
+
+/* === Form Labels === */
+.login-container label {
+    font-weight: 500;           /* Semi-bold text */
+    color: #555;                /* Medium gray text */
+}
+
+/* === Primary Button Styling (e.g., Login / Send Reset Link) === */
+.login-container .btn-primary,
+.btn-primary {
+    width: 100%;                /* Full width button */
+    border-radius: 10px;        /* Rounded corners */
+    background-color: #004aad;  /* Primary blue */
+    color: white;               /* White text */
+    padding: 12px;              /* Space inside button */
+    border: none;               /* No border */
+    cursor: pointer;            /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* === Hover State for Buttons === */
+.login-container .btn-primary:hover,
+.btn-primary:hover {
+    background-color: #00327a;  /* Darker blue on hover */
+}
+
+/* === Utility Classes === */
+
+/* Muted text (e.g., hint text or subtext) */
+.text-muted {
+    color: #666;                /* Light gray */
+}
+
+/* Margin top spacing utility */
+.mt-3 {
+    margin-top: 1rem;           /* Adds spacing above element */
+}
+
+
+
+/* === Signup Page Container === */
+.signup-container {
+    max-width: 450px;
     margin: 60px auto;
     padding: 30px;
     background: #ffffff;
@@ -12,15 +81,15 @@ nav{
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Login heading */
-.login-container h3 {
+/* Heading */
+.signup-container h3 {
     text-align: center;
     margin-bottom: 25px;
     color: #333;
 }
 
-/* Form inputs */
-.login-container .form-control {
+/* Form Control Inputs */
+.signup-container .form-control {
     width: 100%;
     border-radius: 10px;
     padding: 12px;
@@ -30,14 +99,14 @@ nav{
     box-sizing: border-box;
 }
 
-/* Form labels */
-.login-container label {
+/* Labels */
+.signup-container label {
     font-weight: 500;
     color: #555;
 }
 
-/* Submit button */
-.login-container .btn-primary {
+/* Button Styling */
+.signup-container .btn-primary {
     width: 100%;
     border-radius: 10px;
     background-color: #004aad;
@@ -48,53 +117,11 @@ nav{
     transition: background-color 0.3s ease;
 }
 
-/* Hover effect for button */
-.login-container .btn-primary:hover {
+.signup-container .btn-primary:hover {
     background-color: #00327a;
 }
 
-
-
-/* for forgot password section */
-.login-container {
-    max-width: 400px;
-    margin: 60px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.login-container h3 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
-}
-
-.form-control {
-    width: 100%;
-    border-radius: 10px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-    margin-bottom: 15px;
-}
-
-.btn-primary {
-    width: 100%;
-    border-radius: 10px;
-    background-color: #004aad;
-    color: white;
-    padding: 12px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #00327a;
-}
-
+/* Utility Classes */
 .text-muted {
     color: #666;
 }
@@ -102,3 +129,84 @@ nav{
 .mt-3 {
     margin-top: 1rem;
 }
+
+
+/* account css */
+.account-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.account-container h3 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.account-details p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #444;
+}
+
+.account-actions .btn {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary {
+    background-color: #888;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #666;
+}
+
+
+/* Improve table appearance */
+table.table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+table.table th {
+  background-color: #004080;
+  color: #ffffff;
+  padding: 12px;
+  text-align: left;
+}
+
+table.table td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+table.table tbody tr:hover {
+  background-color: #f2f8ff;
+  transition: background-color 0.3s ease;
+}
+
+h1 {
+  color: #004080;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 40px;
+  color: #003366;
+}
+

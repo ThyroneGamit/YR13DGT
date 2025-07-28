@@ -1,5 +1,6 @@
 <!-- page extends to template.html -->
-{% extends "template.html" %} {% block title %}  Post {% endblock %}
+{% extends "template.html" %} 
+{% block title %} Post {% endblock %}
 
 <!-- Post page content -->
 {% block content %}
@@ -8,40 +9,86 @@
     {% for post in posts %}
     <div class="card border-dark">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+            <a href="/posts/{{ post.user.username }}">{{ post.user.username }}</a>
+            
             <!-- start of the delete dropdown menu -->
-             {% if user.id == post.author %}
-             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+            {% if user.id == post.author %}
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a href="delete-post/{{post.id}}" class="dropwdown-menu">Delete</a>
-                    </li>
+                    <li><a class="dropdown-item" href="/delete-post/{{ post.id }}">Delete</a></li>
                 </ul>
             </div>
             {% endif %}
-            <!-- end of delete dropdown menu-->
+            <!-- end of the delete dropdown menu -->
         </div>
 
         <div class="card-body">
-            <div class="card-text">{{post.title}}</div>
+            <div class="card-text">{{ post.title }}</div>
         </div>
         <div class="card-body">
-            <div class="card-text">{{post.content}}</div>
+            <div class="card-text">{{ post.content }}</div>
         </div>
-        <div class="card-footer text-muted">{{post.date_created}}</div>
+
+        <!-- start comment code -->
+        <br />
+        <div class="collapse" id="comments-{{ post.id }}">
+            <div class="card">
+                <div class="card-body" id="comments-expanded-{{ post.id }}">
+                    {% for comment in post.comments %}
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="/posts/{{ comment.user.username }}">@{{ comment.user.username }}</a>: {{ comment.text }}
+                        </div>                
+                        <div>
+                            <small class="text-muted">{{ comment.date_created }}</small>
+                            {% if user.id == comment.author or user.id == post.author %}
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="/delete-comment/{{ comment.id }}">Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <p class="card-text">
+            {% if post.comments|length > 0 %}
+                <a data-bs-toggle="collapse" href="#comments-{{ post.id }}" role="button">
+                    <small>View {{ post.comments|length }} Comments</small>
+                </a>
+            {% else %}
+                <small class="text-muted">No Comments</small>
+            {% endif %}
+        </p>
+        <!-- comment input form -->
+        <form class="input-group mb-3" method="POST" action="/create-comment/{{ post.id }}">
+            <input type="text" id="text" name="text" class="form-control" placeholder="Comment something!" required />
+            <button type="submit" class="btn btn-primary">Comment</button>
+        </form>
+        <!-- end of comment code -->
+
+        <div class="card-footer text-muted">{{ post.date_created }}</div>
     </div>
-    <br />
+    <br/>
     {% endfor %}
- </div>
- {% block footer %}
- <div align="center">
+</div>
+
+{% block footer %}
+<div class="text-center">
     <a href="/create-post">
-        <button type="button" class="btn btn-primary btn-large">
+        <button type="button" class="btn btn-primary btn-lg">
             Create Post
         </button>
     </a>
- </div>
- 
+</div>
+<br />
 {% endblock %}
+
 {% endblock %}
