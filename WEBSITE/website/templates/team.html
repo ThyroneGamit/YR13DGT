@@ -1,0 +1,65 @@
+{% extends "template.html" %}
+
+{% block title %}{{ team_name }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+<div class="text-center mb-4">
+  <h1 class="display-4">{{ team_name }}</h1>
+  <p class="lead">Welcome to the official {{ team_name }} page. Meet the squad and check out their stats.</p>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Jersey</th>
+        <th scope="col">Player Name</th>
+        <th scope="col">Points Per Game (PPG)</th>
+        <th scope="col">Rebounds Per Game (RPG)</th>
+        <th scope="col">Assists Per Game (APG)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for player in players %}
+      <tr>
+        <td>#{{ player.jersey }}</td>
+        <td>{{ player.name }}</td>
+        <td>{{ player.ppg }}</td>
+        <td>{{ player.rpg }}</td>
+        <td>{{ player.apg }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-5">
+  {% if team_name == "SMC Mambas" %}
+  <h3>About SMC Mambas</h3>
+  <p>The SMC Mambas are a team built on solid fundamentals and teamwork. They focus on strong defense and precision
+    offense, striving to excel each season.</p>
+  <p>Recent seasons have shown consistent improvement, with players stepping up to take leadership roles. The Mambas aim
+    to bring home the championship with grit and determination.</p>
+  <p>Stay tuned for updates on games, player highlights, and community events.</p>
+  {% elif team_name == "SMC Vipers" %}
+  <h3>About SMC Vipers</h3>
+  <p>The Vipers are known for their fast-paced gameplay and aggressive defense. Since their founding in 2010, they have
+    established themselves as fierce competitors in the league.</p>
+  <p>This season, the Vipers focus on improving their perimeter shooting and team coordination, with high hopes for a
+    championship run.</p>
+  <p>Follow the team for news on upcoming matches and player spotlights.</p>
+  {% elif team_name == "SMC Pythons" %}
+  <h3>About SMC Pythons</h3>
+  <p>The Pythons pride themselves on strategic plays and strong defensive tactics. Since 2012, they have steadily
+    climbed the ranks and earned respect across the competition.</p>
+  <p>The team is focusing on transition offense and developing young talent this season to push for the finals.</p>
+  <p>Check back often for game recaps, player interviews, and team announcements.</p>
+  {% else %}
+  <h3>About {{ team_name }}</h3>
+  <p>Details about this team are coming soon. Stay tuned!</p>
+  {% endif %}
+</div>
+
+{% endblock %}

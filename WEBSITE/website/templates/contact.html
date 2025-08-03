@@ -1,54 +1,71 @@
 {% extends "template.html" %}
+<!-- Extends the base template for consistent layout -->
 
 {% block title %}Contact Us{% endblock %}
+<!-- Sets the page title to "Contact Us" -->
 
 {% block content %}
+<!-- Main content block starts -->
+
+<!-- Link to the main CSS stylesheet for page styling -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
+<!-- Main container for contact page content -->
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8 text-center mb-5">
+            <!-- Page heading -->
             <h2 class="fw-bold">Get in Touch</h2>
+            <!-- Subheading/description -->
             <p class="text-muted">Have any questions? We'd love to hear from you. Fill out the form or contact us using
                 the details below.</p>
         </div>
     </div>
 
     <div class="row">
-        <!-- Contact Info -->
+        <!-- Contact Info Section -->
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm border-0 h-100">
                 <div class="card-body">
+                    <!-- Contact Information Heading -->
                     <h5 class="card-title fw-bold mb-3">Contact Information</h5>
+                    <!-- Location Info -->
                     <p class="mb-2"><strong>📍 Location:</strong><br>123 Example Street, Auckland, New Zealand</p>
+                    <!-- Phone Info -->
                     <p class="mb-2"><strong>📞 Phone:</strong><br>+64 21 123 4567</p>
+                    <!-- Email Info -->
                     <p class="mb-0"><strong>✉️ Email:</strong><br><a href="mailto:info@example.com">info@example.com</a>
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Contact Form -->
+        <!-- Contact Form Section -->
         <div class="col-md-8">
             <div class="card shadow-sm border-0">
                 <div class="card-body">
+                    <!-- Contact form for user messages -->
                     <form method="POST">
                         <div class="mb-3">
+                            <!-- Name input field -->
                             <label for="name" class="form-label fw-semibold">Your Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
 
                         <div class="mb-3">
+                            <!-- Email input field -->
                             <label for="email" class="form-label fw-semibold">Your Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
 
                         <div class="mb-3">
+                            <!-- Message textarea field -->
                             <label for="message" class="form-label fw-semibold">Message</label>
                             <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                         </div>
 
                         <div class="text-end">
+                            <!-- Submit button -->
                             <button type="submit" class="btn btn-primary px-4">Send Message</button>
                         </div>
                     </form>

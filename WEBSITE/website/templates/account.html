@@ -3,17 +3,22 @@
 {% block title %}Account{% endblock %}
 
 {% block content %}
+<!-- Link to the main CSS stylesheet for styling -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
+<!-- Account container for user details and actions -->
 <div class="account-container">
+    <!-- Account page heading -->
     <h3>My Account</h3>
 
+    <!-- Section displaying user's account details -->
     <div class="account-details">
         <p><strong>Username:</strong> {{ current_user.username }}</p>
         <p><strong>Email:</strong> {{ current_user.email }}</p>
         <!-- Add more fields as needed -->
     </div>
 
+    <!-- Section for account-related actions (e.g., edit profile) -->
     <div class="account-actions mt-3">
         <a href="{{ url_for('auth.edit_profile') }}" class="btn btn-primary">Edit Profile</a>
     </div>

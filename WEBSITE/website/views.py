@@ -87,20 +87,58 @@ def forgot_password():
         return redirect(url_for('auth.login'))  # Changed to auth.login assuming you have auth blueprint
 
     return render_template('forgot_password.html', user=current_user)
-
 @views.route('/teams/smc-mambas')
 def team1():
     players = [
-        {"name": "John Smith", "jersey": 10, "ppg": 22.4, "apg": 6.1, "rpg": 7.3},
-        {"name": "Mike Johnson", "jersey": 7, "ppg": 18.2, "apg": 4.5, "rpg": 5.8},
-        {"name": "Alex Lee", "jersey": 23, "ppg": 25.6, "apg": 5.2, "rpg": 9.0},
+        {"name": "Seb Sanchez", "jersey": 4, "ppg": 7.4, "apg": 0.4, "rpg": 2},
+        {"name": "Philip Ah Kau", "jersey": 61, "ppg": 6.2, "apg": 1, "rpg": 5},
+        {"name": "Thyrone Gamit", "jersey": 23, "ppg": 5.4, "apg": 0.2, "rpg": 1},
+        {"name": "Charbel Alboutros", "jersey": 77, "ppg": 4.2, "apg": 0.6, "rpg": 3},
+        {"name": "Junior Siketi", "jersey": 64, "ppg": 3.5, "apg": 0.5, "rpg": 2},
+        {"name": "Lucius Pang", "jersey": 31, "ppg": 3.2, "apg": 1, "rpg": 5},
+        {"name": "Peter Reyes", "jersey": 37, "ppg": 3.0, "apg": 0.4, "rpg": 2},
+        {"name": "Diego Trevino", "jersey": 85, "ppg": 1.2, "apg": 0.8, "rpg": 4},
+        {"name": "Dane Manuyag", "jersey": 42, "ppg": 0.8, "apg": 0.4, "rpg": 2},
+        {"name": "Tyrese Tupai", "jersey": 67, "ppg": 0.4, "apg": 0.4, "rpg": 2},
+        {"name": "Rodrich Salazar", "jersey": 67, "ppg": 0, "apg": 0, "rpg": 0},
     ]
-    return render_template(
-        'team1.html',
-        team_name="SMC Mambas",
-        players=players,
-        user=current_user
-    )
+    return render_template('team.html', team_name="SMC Mambas", players=players, user=current_user)
+
+
+@views.route('/teams/smc-vipers')
+def team2():
+    players = [
+        {"name": "Zion Talbot", "jersey": 3, "ppg": 21.3, "apg": 5.9, "rpg": 6.7},
+        {"name": "Marcus Bell", "jersey": 11, "ppg": 19.8, "apg": 4.4, "rpg": 7.2},
+        {"name": "Luca Daniels", "jersey": 5, "ppg": 17.5, "apg": 6.1, "rpg": 5.1},
+        {"name": "Ethan Vaka", "jersey": 9, "ppg": 16.3, "apg": 3.8, "rpg": 6.0},
+        {"name": "Kaleb Hunt", "jersey": 14, "ppg": 14.7, "apg": 5.2, "rpg": 5.5},
+        {"name": "Jayce Martin", "jersey": 1, "ppg": 13.1, "apg": 4.0, "rpg": 4.9},
+        {"name": "Denzel Cruz", "jersey": 8, "ppg": 12.5, "apg": 3.7, "rpg": 5.3},
+        {"name": "Sione Lomu", "jersey": 15, "ppg": 10.8, "apg": 2.9, "rpg": 6.8},
+        {"name": "Leo Tuigamala", "jersey": 6, "ppg": 9.4, "apg": 3.1, "rpg": 4.6},
+        {"name": "Andre Li", "jersey": 4, "ppg": 11.6, "apg": 3.5, "rpg": 5.0},
+        {"name": "Carl Rivera", "jersey": 2, "ppg": 2.3, "apg": 0.5, "rpg": 1.1},
+    ]
+    return render_template('team.html', team_name="SMC Vipers", players=players, user=current_user)
+
+
+@views.route('/teams/smc-pythons')
+def team3():
+    players = [
+        {"name": "Vincent Isip", "jersey": 73, "ppg": 8.7, "apg": 2.5, "rpg": 2.9},
+        {"name": "Mike Johnson", "jersey": 7, "ppg": 7.4, "apg": 2.1, "rpg": 2.2},
+        {"name": "Ira Abesamis", "jersey": 26, "ppg": 3.2, "apg": 2.0, "rpg": 2.3},
+        {"name": "Jayden Lee", "jersey": 15, "ppg": 6.5, "apg": 2.4, "rpg": 2.6},
+        {"name": "Caleb Walker", "jersey": 23, "ppg": 5.9, "apg": 2.9, "rpg": 2.7},
+        {"name": "Ethan Brown", "jersey": 3, "ppg": 4.3, "apg": 2.3, "rpg": 2.4},
+        {"name": "Liam White", "jersey": 5, "ppg": 2.6, "apg": 2.0, "rpg": 2.5},
+        {"name": "Noah King", "jersey": 12, "ppg": 5.1, "apg": 2.7, "rpg": 2.1},
+        {"name": "Lucas Green", "jersey": 33, "ppg": 6.2, "apg": 2.8, "rpg": 2.8},
+        {"name": "Isaiah Scott", "jersey": 0, "ppg": 4.9, "apg": 2.2, "rpg": 2.0},
+    ]
+    return render_template('team.html', team_name="SMC Pythons", players=players, user=current_user)
+
 
 # blog comment route 
 @views.route("/create-comment/<post_id>", methods=['POST']) 
@@ -157,3 +195,29 @@ def like(post_id):
         "likes": len(post.likes), 
         "liked": current_user.id in map(lambda x: x.author, post.likes)
     }) 
+
+@views.route('/videos')
+def video_footage():
+    videos = [
+        {
+            "title": "Game Highlights: SMC Mambas vs Rivals",
+            "embed_url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        },
+        {
+            "title": "Top 5 Dunks of the Season",
+            "embed_url": "https://www.youtube.com/embed/oHg5SJYRHA0"
+        }
+    ]
+    return render_template("videos.html", videos=videos, user=current_user)
+
+
+@views.route('/store')
+def store():
+    products = [
+        {"name": "Team Jersey", "price": 49.99, "image": "jersey.png"},
+        {"name": "Basketball Shorts", "price": 22.50, "image": "shorts.png"},
+        {"name": "Basketball socks", "price": 17.50, "image": "socks.png"},
+        {"name": "Mouthguard", "price": 5, "image": "mouthguard.png"},
+    ]
+    return render_template("store.html", products=products, user=current_user)
+

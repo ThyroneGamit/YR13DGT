@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- import title from route -->
   <title>{% block title %}{% endblock %}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,52 +25,63 @@
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <!-- Left side links -->
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
-        </div>
-        {% if user.is_authenticated %}
-        <a class="nav-link" href="/blog">Blog</a>
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Teams
-          </a>
-          <ul class="dropdown-menu">
-            <a class="dropdown-item" href="/teams/smc-mambas">SMC Mambas</a>
-            <li><a class="dropdown-item" href="/teams/team2">Team 2</a></li>
-            <li><a class="dropdown-item" href="/teams/team3">Team 3</a></li>
-          </ul>
+          <a class="nav-link active" href="/home">Home</a>
+          <a class="nav-link" href="/store">Store</a>
+          {% if user.is_authenticated %}
+          <a class="nav-link" href="/blog">Blog</a>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Teams
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/teams/smc-mambas">SMC Mambas</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/teams/smc-vipers">SMC Vipers</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/teams/smc-pythons">SMC Pythons</a></li>
+            </ul>
+          </div>
+          <a class="nav-link" href="/videos">Videos</a>
+          {% else %}
+          <a class="nav-link" href="/contact">Contact Us</a>
+          {% endif %}
         </div>
 
-        <!-- Dropdown menu -->
-        <div class="nav-item dropdown ms-auto">
-          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
-            data-bs-toggle="dropdown">
-            {{ user.username }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="/account">Account</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="/logout">Logout</a></li>
-          </ul>
-        </div>
-        {% else %}
-        <div class="navbar-nav">
-          <a class="nav-link" href="/contact">Contact Us</a>
+        <!-- Right side: Login/Signup or Account -->
+        <div class="navbar-nav ms-auto">
+          {% if not user.is_authenticated %}
           <a class="nav-link" href="/login">Login</a>
           <a class="nav-link" href="/sign-up">Signup</a>
+          {% else %}
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              {{ user.username }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/account">Account</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </div>
+          {% endif %}
         </div>
-        {% endif %}
       </div>
-    </div>
     </div>
   </nav>
 
+
   <!-- Main Container -->
   <div class="container mt-4">
-
     <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
