@@ -77,16 +77,20 @@ def delete_post(id):
         db.session.commit()
         flash('Post deleted!', category='success')
     return redirect(url_for('views.blog'))
-
 @views.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
     if request.method == 'POST':
         email = request.form.get('email')
-        # You can check if the email exists in your DB here.
-        flash('If this email exists in our system, a password reset link has been sent.', category='info')
-        return redirect(url_for('auth.login'))  # Changed to auth.login assuming you have auth blueprint
+        user = User.query.filter_by(email=email).first()  # Check if user exists
+        if user:
+            flash('If this email exists in our system, a password reset link has been sent.', category='info')
+            # Here you would send the reset link
+        else:
+            flash('Email does not exist', category='error')
+        return redirect(url_for('auth.login'))  # Redirect to login
 
     return render_template('forgot_password.html', user=current_user)
+                           
 @views.route('/teams/smc-mambas')
 def team1():
     players = [
@@ -99,8 +103,8 @@ def team1():
         {"name": "Peter Reyes", "jersey": 37, "ppg": 3.0, "apg": 0.4, "rpg": 2},
         {"name": "Diego Trevino", "jersey": 85, "ppg": 1.2, "apg": 0.8, "rpg": 4},
         {"name": "Dane Manuyag", "jersey": 42, "ppg": 0.8, "apg": 0.4, "rpg": 2},
-        {"name": "Tyrese Tupai", "jersey": 67, "ppg": 0.4, "apg": 0.4, "rpg": 2},
-        {"name": "Rodrich Salazar", "jersey": 67, "ppg": 0, "apg": 0, "rpg": 0},
+        {"name": "Tyrese Tupai", "jersey": 67, "ppg": 0.8, "apg": 0.4, "rpg": 2},
+        {"name": "Rodrich Salazar", "jersey": 67, "ppg": 0.4, "apg": 0, "rpg": 0},
     ]
     return render_template('team.html', team_name="SMC Mambas", players=players, user=current_user)
 
@@ -200,11 +204,11 @@ def like(post_id):
 def video_footage():
     videos = [
         {
-            "title": "Game Highlights: SMC Mambas vs Rivals",
+            "title": "Game Highlights: SMC Mambas vs James Cook",
             "embed_url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
         },
         {
-            "title": "Top 5 Dunks of the Season",
+            "title": "Top 5 Plays of the Season",
             "embed_url": "https://www.youtube.com/embed/oHg5SJYRHA0"
         }
     ]
@@ -220,4 +224,8 @@ def store():
         {"name": "Mouthguard", "price": 5, "image": "mouthguard.png"},
     ]
     return render_template("store.html", products=products, user=current_user)
+
+@views.route('/news')
+def news():
+    return render_template('news.html', user=current_user)
 

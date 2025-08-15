@@ -1,0 +1,58 @@
+{% extends "template.html" %}
+{% block title %}News{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+<!-- Hero Section -->
+<div class="hero-section text-white d-flex align-items-center bg-primary" style="height: 40vh;">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Latest News</h1>
+        <p class="lead">Stay updated with SMC basketball scores, highlights, and announcements</p>
+    </div>
+</div>
+
+<!-- Featured News -->
+<div class="container my-5">
+    <h2 class="mb-4">🏀 Featured Story</h2>
+    <div class="card shadow-lg border-0 p-4">
+        <h3 class="card-title">SMC Wins Auckland Schools Tournament</h3>
+        <p class="card-text">
+            Sancta Maria College's senior boys team secured the championship after a thrilling final against St Kentigern. 
+            The game was neck-and-neck until the last quarter, when SMC pulled ahead with a series of fast breaks and three-pointers.
+        </p>
+        <a href="#" class="btn btn-primary">Read More</a>
+    </div>
+</div>
+
+<!-- Recent News -->
+<div class="container my-5">
+    <h2 class="mb-4">📋 Recent Updates</h2>
+    <div class="row g-4">
+        <!-- News Card 1 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm p-3">
+                <h5 class="card-title">Pre-Season Training Schedule</h5>
+                <p class="card-text">The 2025 pre-season training schedule has been released. Check times and locations here.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+            </div>
+        </div>
+        <!-- News Card 2 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm p-3">
+                <h5 class="card-title">Player of the Month: April</h5>
+                <p class="card-text">Congratulations to Ethan Li for his outstanding performance and leadership on the court this month.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+            </div>
+        </div>
+        <!-- News Card 3 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm p-3">
+                <h5 class="card-title">Game Day: SMC vs Sacred Heart</h5>
+                <p class="card-text">Everything you need to know before this Friday's big match-up.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

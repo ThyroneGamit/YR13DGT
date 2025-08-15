@@ -4,53 +4,55 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
-<!-- Hero Section (No Background) -->
-<div class="text-center text-white bg-dark py-5">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Sancta Maria College Basketball</h1>
+<!-- Hero Section with Background Image -->
+<div class="hero-section text-white d-flex align-items-center" 
+    <div class="container text-center">
+        <h1 class="display-3 fw-bold">Sancta Maria College Basketball</h1>
         <p class="lead fst-italic">"Hard work beats talent when talent fails to work hard"</p>
+        <a href="{{ url_for('views.news') }}" class="btn btn-primary btn-lg mt-3">Read More</a>
     </div>
 </div>
 
-<!-- Main Content -->
+<!-- Upcoming Games -->
 <div class="container my-5">
-
-    <h2 class="subheading mb-3">🏀 About This Website</h2>
-    <p>
-        Welcome to the official Sancta Maria College Basketball hub — your go-to destination for all things basketball
-        at SMC.
-        Whether you're a player, coach, parent, or fan, this site provides up-to-date information on team activities,
-        game results,
-        player development, and more.
-    </p>
-
-    <h2 class="subheading mt-5 mb-3">🎥 Accessing Game Footage</h2>
-    <p>
-        Players can log in with their credentials to access personalized video footage from games and training sessions.
-        Simply head to the <strong>"Videos"</strong> section, where content is organized by team, date, and opponent.
-        This feature helps athletes reflect on past performances and continuously improve.
-    </p>
-
-    <h2 class="subheading mt-5 mb-3">📋 Player Development Tools</h2>
-    <p>
-        Our platform includes tools for performance review, including coach feedback and highlight tagging.
-        Coaches can leave notes on key moments in each video, allowing players to focus on specific improvements and
-        track their progress throughout the season.
-    </p>
-
-    <h2 class="subheading mt-5 mb-3">🗓️ News & Events</h2>
-    <p>
-        Stay informed with updates on upcoming matches, tournaments, and team meetings. The news section is updated
-        regularly
-        to ensure all team members and supporters are on the same page.
-    </p>
-
-    <h2 class="subheading mt-5 mb-3">📞 Contact the Coaching Staff</h2>
-    <p>
-        If you have any questions regarding training schedules, team selections, or media access, head over to the
-        <a href="{{ url_for('views.contact') }}">Contact Us</a> page where you’ll find direct email and phone contacts
-        for coaching staff.
-    </p>
-
+    <h2 class="mb-4">🏀 Upcoming Games</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm text-center p-3">
+                <h5>MAY 10</h5>
+                <p>4:00 PM</p>
+                <p><strong>SMC vs Sacred Heart</strong></p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm text-center p-3">
+                <h5>MAY 17</h5>
+                <p>5:30 PM</p>
+                <p><strong>SMC vs Botany Downs</strong></p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm text-center p-3">
+                <h5>MAY 24</h5>
+                <p>6:00 PM</p>
+                <p><strong>SMC vs St Kentigern</strong></p>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Latest News -->
+<div class="container my-5">
+    <h2 class="mb-4">📰 Latest News</h2>
+    <p>Stay updated with the latest scores, highlights, and announcements from the Sancta Maria College basketball teams. 
+       Check back often for tournament updates, player highlights, and important notices for parents and supporters.</p>
+</div>
+
+<!-- Contact -->
+<div class="container my-5">
+    <h2 class="mb-4">📞 Contact the Coaching Staff</h2>
+    <p>If you have any questions regarding training schedules, team selections, or media access, visit our 
+       <a href="{{ url_for('views.contact') }}">Contact Us</a> page to get in touch with the coaching team.</p>
+</div>
+
 {% endblock %}
